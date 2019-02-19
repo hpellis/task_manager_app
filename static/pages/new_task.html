@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+
+<form action="{{url_for('tasks') }}">
+
+  Task Name:<br>
+  <input type="text" name="title"><br>
+  
+  Description:<br>
+  <input type="text" name="desc"><br>
+    
+  Due Date:<br>
+  <input type="text" name="due_date"><br>
+  
+  Priority:<br>
+  <input type="radio" name="imp" value="important">Important<br>
+  
+  <input type="submit" value="Create Task">
+  
+</form>
+
+
+{% endblock %}
