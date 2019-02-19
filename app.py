@@ -12,15 +12,12 @@ import json
 import sqlite3
 from engine import Task
 
-
 mock_data=[{"task_id":37,"title":"sorbitol","desc":"Cross-group","status":"Fuscia","date_due":"3/26/2018","date_created":"10/25/2018","imp":"Mauv"},
 {"task_id":46,"title":"Buspirone hydrochloride","desc":"Face to face","status":"Goldenrod","date_due":"8/10/2018","date_created":"7/22/2018","imp":"Orange"},
 {"task_id":64,"title":"Topiramate","desc":"bottom-line","status":"Aquamarine","date_due":"10/27/2018","date_created":"5/30/2018","imp":"Green"},
 {"task_id":73,"title":"Titanium Dioxide","desc":"client-server","status":"Red","date_due":"5/23/2018","date_created":"8/27/2018","imp":"Fuscia"},]
 
-
 app = Flask(__name__)
-cors = CORS(app)
 
 
 @app.route('/')
@@ -33,25 +30,66 @@ def mock_data():
     return jsonify(mock_data)
 
 
-@app.route('/data', methods = ['GET', 'POST'])
-def api():
+@app.route('/tasks')
+def api_get_all_tasks():
     x = Task()
     result= x.get_all_tasks()
     return jsonify(result)
+
+
+@app.route('/tasks/<task_id>', methods = ['GET', 'POST'])
+def get_xxxx(task_id):
+    if request.method == 'GET':
+        return jsonify(tasks.read(xxxx))
+    
+    
+@app.route('/tasks', methods = ['POST'])
+def create_task():
+    if request.method == 'POST':
+        data = request.json
+        title = data.get('title')
+        desc = data.get('desc', None)
+        
+        if not title:
+            return 
+    
+       
+update_task
+
+delete_task
+
+
+
+
+
+
+@app.route('/tasks', methods=['POST'])
+def create():
+    if request.method == 'POST':
+        data = request.json
+        title = data.get('title', None)
+        description = data.get('description', None)
+
+        if not title or not description:
+            return "The fields 'title' and 'description' are required", 400
+
+        task = tasks_dao.create(data)
+
+        return jsonify(task), 201
     
     
 #loop over objects
 #return as dictionary
     
 
-@app.route('/addtask', methods = ['GET', 'POST'])
-def create_task():
-    x = Task()
-    task_id = request.form.get('task_id')
-    title = request.form.get('title')
-    desc = request.form.get('title')
-    due_date = request.form.get('title')
-    create_task(task_id, title, desc, due_date)
+#@app.route('/addtask', methods = ['GET', 'POST'])
+#def create_task():
+#    x = Task()
+#    task_id = request.form.get('task_id')
+#    title = request.form.get('title')
+#    desc = request.form.get('title')
+#    due_date = request.form.get('title')
+#    create_task(task_id, title, desc, due_date)
     
 
 
