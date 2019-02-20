@@ -6,7 +6,7 @@ Created on Wed Feb 20 12:17:14 2019
 @author: harriet
 """
 
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect, url_for
 import json
 import sqlite3
 from engine import Task
@@ -17,44 +17,29 @@ app = Flask(__name__)
 @app.route('/api/tasks', methods = ['GET'])
 def get_all_tasks():
     x = Task()
-    
     if request.method == 'GET':
         result = x.get_all_tasks()
         return jsonify(result)
-    
     else:
-        pass
-    
-
-    
+        pass    
 
 
 @app.route('/api/task/<task_id>', methods = ['GET'])
 def single_task():
     x = Task()
-    
     if request.method == 'GET':
         result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
         return jsonify(result)
+    
+#above are the two apis that call from front end pages
+#make GET requests to these 
 
     
-#@app.route('/api/task/add', methods = 'POST')
-#def add_task():
-#    x = Task()
-#    
-#    if request.method == 'POST':
-#        data = request.json
-#        title = data.get('title')
-#        desc = data.get('desc')
-#        date_due = data.get('date_due')
-#        imp = data.get('imp')
-#        
-#        x.create_task(title, desc, date_due, imp)
-#        
-#        return "successfully added task"
-#    
-#    else:
-#        pass
+
+@app.route('/')
+def home():
+    
+
     
     
 @app.route('/api/task/add', methods = 'POST')

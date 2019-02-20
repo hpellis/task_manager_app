@@ -187,6 +187,24 @@ def create_task():
 #    pass
 #    
 
+
+#@app.route('/api/task/add', methods = 'POST')
+#def add_task():
+#    x = Task()
+#    
+#    if request.method == 'POST':
+#        data = request.json
+#        title = data.get('title')
+#        desc = data.get('desc')
+#        date_due = data.get('date_due')
+#        imp = data.get('imp')
+#        
+#        x.create_task(title, desc, date_due, imp)
+#        
+#        return "successfully added task"
+#    
+#    else:
+#        pass
     
 if __name__ == '__main__':
     app.run(debug=True)

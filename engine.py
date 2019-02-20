@@ -8,6 +8,8 @@ Created on Mon Feb 18 11:41:13 2019
 from datetime import datetime
 from os.path import exists
 from sqlite3 import connect
+import json
+import requests
 
 class Task():
     
@@ -105,16 +107,36 @@ class Task():
             self.c.close()
             
         except Exception as e:
-            print(e)       
+            print(e)   
+            
+    def call_api():
+        try:
+            endpoint = 'http://127.0.0.1:5000/api'
+            response = requests.get(endpoint)
+            
+            if response.status_code == 200:
+                data = response.json()
+                return data
+            
+            elif response.status_code == 400:
+                print("400")
+                
+            elif response.status_code == 500:
+                print("error 500")
+                
+        except:
+            print("Error with API")
+                
+                
+            
             
 
-
-x = Task()
-
-x.create_task('doctor appointment', 'book appointment', '20/03/2019', "1")  
-
-x.create_task('buy groceries', 'buy groceries for party', '10/03/2019', "0")  
-
+#x = Task()
+#
+#x.create_task('doctor appointment', 'book appointment', '20/03/2019', "1")  
+#
+#x.create_task('buy groceries', 'buy groceries for party', '10/03/2019', "0")  
+#
 
 
     

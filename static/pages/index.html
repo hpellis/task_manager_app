@@ -1,56 +1,79 @@
+{% extends 'layout.html' %}
+{% block content %}
 
-<html>
+
+<!DOCTYPE html>
+<html lang="en-GB">
+
+
+<!--
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/custom.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css')}}"> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <title>A Cool Name for a To Do List App</title>
+</head>
+  
+  -->
+
 
 <body>
 
-<p id="api_resp"> </p>
-
+  <main>
+    <h1>Tasks</h1>
+    
+    <div>Add a new task:
+    
+      <form action="/add" method="POST">
+      <input type="text" name="a-task">
+      
+      
+      <input type="submit">
+      
+    </form>
+    </div>
+    
+    <div>
+      <ul>
+      
+    <!--  {{api_results}} ADD AN IF STTAMENT SO IF NO RESULTS THERE@S A MESSAGE ON PAGE-->
+        {% for task in api_results %}
+          <li><input type="checkbox">{{task}}</li>
+        {% endfor %}
+        
+      </ul>
+    </div>
+  </main>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="static/js/engine.js"></script>
+  
 </body>
 
-</html>
+<!--
 
-<script>
+<form action="{{url_for('tasks') }}">
 
-let url = 'http://127.0.0.1:5000/api';
-
-
-#// sync get call 
-
-#function called get api data
-#uses http get function in javascript library
-#sent the URL as a parameter to that
+  Task Name:<br>
+  <input type="text" name="title"><br>
   
-get_api_data = function httpGet(theUrl)
-
-#create new variable called xmlHttp
-#this is an Ajax method
-#this is one way to makea GET request with javascript
-#open this object
-#tell it to send a get request
-#pass it the url
-# false tells ajax we want to send as a synchronous response
-#this means right away
-#then use the send call (not sure why we have to do this)
-#finally return the response text variable from the object
-
-
-{
- var xmlHttp = new XMLHttpRequest();
- xmlHttp.open("GET", url, false); 
- xmlHttp.send(null);
- return xmlHttp.responseText;
- 
- }
+  Description:<br>
+  <input type="text" name="desc"><br>
+    
+  Due Date:<br>
+  <input type="text" name="due_date"><br>
+  
+  Priority:<br>
+  <input type="radio" name="imp" value="important">Important<br>
+  
+  <input type="submit" value="Create Task">
+  
+</form>
+  
+-->
 
 
-
-document.getElementById("api-resp").innerHTML = get_api_data()
-
-
-#async fetching
-
-# GET request
-
-
-
-
+{% endblock %}
