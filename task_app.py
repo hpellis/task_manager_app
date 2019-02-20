@@ -14,6 +14,41 @@ from engine import Task
 app = Flask(__name__)
 
 
+
+@app.route('/', methods=['GET','POST'])
+def index():
+    if request.method =='GET':
+        api_results = call_api()
+        return render_template('index.html', api_results = api_results)
+    elif request.method =='POST':
+        print('post request on api?')
+        return None
+
+#@app.route('/')
+#def index():
+#    tasks_to_show = retrieve_tasks()
+#    return render_template('index.html', tasks_to_show = tasks_to_show)
+
+@app.route('/api')
+def api():
+    tasks_to_show = retrieve_tasks()
+    return tasks_to_show
+
+@app.route('/add', methods=['GET','POST'])
+def add():
+    if request.method =='GET':
+        return render_template("index.html")
+    elif request.method =='POST':
+        form_data = request.form
+        task_name = form_data['a-task']
+        create_task(task_name)
+        return redirect(url_for('index'))
+    
+    
+    
+    
+
+
 @app.route('/api/tasks', methods = ['GET'])
 def get_all_tasks():
     x = Task()
