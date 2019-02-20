@@ -43,7 +43,7 @@ class Task():
         except Exception as e:
             print(e)
 
-        
+#could order this by due date        
     def get_all_tasks(self):
         try:
             query = "SELECT * from tasks;"
@@ -65,25 +65,61 @@ class Task():
         try:
             self.connect_db()
             query = ''' INSERT INTO tasks(task_id, title, desc, status, date_due, date_created, imp)
-            VALUES(?,?,?,?,?,?,?)''' (self.task_id, self.title, self.desc, self.status, self.date_due, self.date_created, self.imp)
-            self.c.execute(query)
-            self.c.commit()
-            self.connection.close()
+            VALUES(?, ?, ?, ?, ?, ?, ?)''' 
+            self.c.execute(query, (self.task_id, self.title, self.desc, self.status, self.date_due, self.date_created, self.imp))
+            self.connection.commit()
+            self.c.close()
             
         except Exception as e:
             print(e)
             
-x = Task()
-
-#result = x.get_all_tasks()    
-
-x.create_task(4, 'doctor appointment', 'book appointment', '20/03/2019', 1)   
+    
+    def delete_task(self, task_id):
+        self.task_id = task_id
         
+        try:
+            self.connect_db()
+            query = ''' DELETE FROM tasks WHERE task_id = ? '''
+            self.c.execute(query, self.task_id)
+            self.connection.commit()
+            self.c.close()
         
-#    def update_task(self):
-##        need SQL statement here
-#        pass
+        except Exception as e:
+            print(e)
+
+
+    def update_task(self, task_id, title=None, desc=None, status=None, date_due=None, imp=None):
+        
+        self.task_id = task_id
+        self.title = title
+        self.desc = desc
+        self.status = status
+        self.date_due = date_due
+        self.imp = imp
+        
+        try:
+            self.connect_db()
+            query = ''' UPDATE tasks SET title=?, desc=?, status=?, date_due=?, imp=? WHERE task_id=? '''
+            self.c.execute(query, (self.title, self.desc, self.status, self.date_due, self.imp, self.task_id))
+            self.connection.commit()
+            self.c.close()
             
-#    def delete_task(self):
-#        need SQL statement here
-#        pass
+        except Exception as e:
+            print(e)       
+            
+    
+#x = Task()
+#    
+##result = x.get_all_tasks()    
+#
+##x.create_task(4, 'doctor appointment', 'book appointment', '20/03/2019', 1)   
+#
+##x.delete_task("4")
+#
+#x.update_task("4", "Doctor Appt", "book appt ASAP", "in progress", "20/04/2019", 1)
+#     
+         
+
+            
+
+

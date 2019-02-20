@@ -6,8 +6,8 @@ Created on Mon Feb 18 11:41:13 2019
 @author: harriet
 """
 
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask import Flask, request, render_template, jsonify
+#from flask_cors import CORS
 import json
 import sqlite3
 from engine import Task
@@ -29,6 +29,31 @@ def practice():
 def mock_data():
     return jsonify(mock_data)
 
+#this one limits what gets jsonified
+#this is our api that gets task
+@app.route("/api/task/<int:id>>", methods = ['GET', 'POST'])
+def task_single(id):
+    if request.method == 'GET'
+        sql_statement = "SELECT * FROM tasks WHERE id = {} ".format(id)
+    #    c.execute(sql_statement, id)
+        return jsonfiy({"task":results})
+    
+    if request.method == 'POST':
+        pass
+
+#this is api that gets all tasks    
+@app.route("/api/tasks", methods = ['GET'])
+def all_tasks(id):
+    if request.method == 'GET'
+        sql_statement = "SELECT * FROM tasks WHERE id = {} ".format(id)
+    #    c.execute(sql_statement, id)
+        return jsonfiy({"task":results})
+    
+    if request.method == 'POST':
+        pass
+    
+       
+
 
 @app.route('/tasks')
 def api_get_all_tasks():
@@ -43,7 +68,7 @@ def get_xxxx(task_id):
         return jsonify(tasks.read(xxxx))
     
     
-@app.route('/tasks', methods = ['POST'])
+@app.route('/tasks/add', methods = ['POST'])
 def create_task():
     if request.method == 'POST':
         data = request.json
@@ -51,31 +76,36 @@ def create_task():
         desc = data.get('desc', None)
         
         if not title:
-            return 
+            pass
     
-       
-update_task
+#@app.route('tasks/<task_id>', methods = ['PUT'])       
+#def update_task(task_id):
+#    pass
+#    
+#
+#@app.route('tasks/<task_id>'), methods = ['DELETE']
+#def delete_task(task_id):
+#    pass
+#    
 
-delete_task
 
 
 
 
 
-
-@app.route('/tasks', methods=['POST'])
-def create():
-    if request.method == 'POST':
-        data = request.json
-        title = data.get('title', None)
-        description = data.get('description', None)
-
-        if not title or not description:
-            return "The fields 'title' and 'description' are required", 400
-
-        task = tasks_dao.create(data)
-
-        return jsonify(task), 201
+#@app.route('/tasks', methods=['POST'])
+#def create():
+#    if request.method == 'POST':
+#        data = request.json
+#        title = data.get('title', None)
+#        description = data.get('description', None)
+#
+#        if not title or not description:
+#            return "The fields 'title' and 'description' are required", 400
+#
+#        task = tasks_dao.create(data)
+#
+#        return jsonify(task), 201
     
     
 #loop over objects
