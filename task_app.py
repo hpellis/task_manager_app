@@ -34,7 +34,7 @@ def index():
 @app.route('/add', methods=['GET', 'POST'])
 def add_task():
     if request.method == 'GET':
-        return render_template ('new_task.html')
+        return render_template ('add_task.html')
     
     elif request.method == 'POST':
         x = Task()
@@ -46,7 +46,7 @@ def add_task():
 
         x.create_task(title, desc, date_due, imp)
         
-        return redirect(url_for('.index'))
+        return redirect(url_for('index'))
 
 
 
