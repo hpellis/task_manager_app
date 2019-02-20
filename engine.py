@@ -109,7 +109,7 @@ class Task():
         except Exception as e:
             print(e)   
             
-    def call_api():
+    def call_api(self):
         try:
             endpoint = 'http://127.0.0.1:5000/api'
             response = requests.get(endpoint)

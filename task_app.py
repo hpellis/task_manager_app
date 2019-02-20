@@ -46,8 +46,8 @@ def add_task():
 
         x.create_task(title, desc, date_due, imp)
         
-        return redirect(url_for('index'))
-    
+        return redirect(url_for('.index'))
+
 
 
     

@@ -20,6 +20,7 @@
   -->
 
 
+
 <body>
 
   <main>
@@ -36,26 +37,10 @@
     </form>
     </div>
     
-    <div>
-      <ul>
-      
-    <!--  {{api_results}} ADD AN IF STTAMENT SO IF NO RESULTS THERE@S A MESSAGE ON PAGE-->
-        {% for task in api_results %}
-          <li><input type="checkbox">{{task}}</li>
-        {% endfor %}
-        
-      </ul>
-    </div>
   </main>
-  
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="static/js/engine.js"></script>
-  
-</body>
-
-<!--
-
-<form action="{{url_for('tasks') }}">
+    
+    
+    
 
   Task Name:<br>
   <input type="text" name="title"><br>
@@ -70,10 +55,11 @@
   <input type="radio" name="imp" value="important">Important<br>
   
   <input type="submit" value="Create Task">
-  
-</form>
-  
--->
 
 
-{% endblock %}
+  
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="static/js/engine.js"></script>
+  
+</body>
