@@ -88,7 +88,7 @@ class Task():
             print(e)
 
 
-    def update_task(self, task_id, title=None, desc=None, status=None, date_due=None, imp=None):
+    def update_task(self, task_id, title, desc, status, date_due, imp):
         
         self.task_id = task_id
         self.title = title
