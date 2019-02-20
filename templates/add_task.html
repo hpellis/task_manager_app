@@ -20,7 +20,6 @@
   -->
 
 
-
 <body>
 
   <main>
@@ -28,35 +27,28 @@
     
     <div>Add a new task:
     
-      <form action="/add" method="POST">
-      <input type="text" name="a-task">
+    <form action="/add" method="POST">
+    
+  Task Name:<br>
+  <input type="text" name="title"><br>
+    
+    
+  Description:<br>
+  <input type="text" name="desc"><br>
+  
+    Due Date:<br>
+  <input type="text" name="due_date"><br>
+
+    Priority:<br>
+    <input type="radio" name="imp" value="important">Important<br>
       
-      
-      <input type="submit">
+      <input type="submit" value="Create Task">
       
     </form>
     </div>
     
   </main>
     
-    
-    
-
-  Task Name:<br>
-  <input type="text" name="title"><br>
-  
-  Description:<br>
-  <input type="text" name="desc"><br>
-    
-  Due Date:<br>
-  <input type="text" name="due_date"><br>
-  
-  Priority:<br>
-  <input type="radio" name="imp" value="important">Important<br>
-  
-  <input type="submit" value="Create Task">
-
-
   
   
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
