@@ -205,6 +205,15 @@ def create_task():
 #    
 #    else:
 #        pass
+            
+@app.route('/api/tasks', methods = ['GET'])
+def get_all_tasks():
+    x = Task()
+    if request.method == 'GET':
+        result = x.get_all_tasks()
+        return jsonify(result)
+    else:
+        pass    
     
 if __name__ == '__main__':
     app.run(debug=True)
