@@ -13,6 +13,7 @@ from engine import Task
 
 app = Flask(__name__)
 
+
 @app.route('/api/tasks', methods = ['GET'])
 def get_all_tasks():
     x = Task()
@@ -20,9 +21,22 @@ def get_all_tasks():
     if request.method == 'GET':
         result = x.get_all_tasks()
         return jsonify(result)
+    
     else:
         pass
     
+
+    
+
+
+@app.route('/api/task/<task_id>', methods = ['GET'])
+def single_task():
+    x = Task()
+    
+    if request.method == 'GET':
+        result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
+        return jsonify(result)
+
     
 #@app.route('/api/task/add', methods = 'POST')
 #def add_task():
@@ -56,19 +70,14 @@ def add_task():
 
         x.create_task(title, desc, date_due, imp)
         
-        return "successfully added task"
+        return render_template('')
     
     else:
         pass        
          
 
-@app.route('/api/task/<task_id>', methods = ['GET'])
-def single_task():
-    x = Task()
-    
-    if request.method == 'GET':
-        result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
-        return render_template('task.html',result = jsonify(result))
+
+
    
     
         
