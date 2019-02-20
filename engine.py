@@ -53,8 +53,8 @@ class Task():
             print(e)
             
     
-    def create_task(self, task_id, title, desc, date_due, imp):
-        self.task_id = task_id
+    def create_task(self, title, desc, date_due, imp):
+#        self.task_id = task_id
         self.title = title
         self.desc = desc
         self.status = 'to do'
@@ -64,9 +64,9 @@ class Task():
         
         try:
             self.connect_db()
-            query = ''' INSERT INTO tasks(task_id, title, desc, status, date_due, date_created, imp)
-            VALUES(?, ?, ?, ?, ?, ?, ?)''' 
-            self.c.execute(query, (self.task_id, self.title, self.desc, self.status, self.date_due, self.date_created, self.imp))
+            query = ''' INSERT INTO tasks(title, desc, status, date_due, date_created, imp)
+            VALUES(?, ?, ?, ?, ?, ?)''' 
+            self.c.execute(query, (self.title, self.desc, self.status, self.date_due, self.date_created, self.imp))
             self.connection.commit()
             self.c.close()
             
@@ -107,6 +107,16 @@ class Task():
         except Exception as e:
             print(e)       
             
+
+
+x = Task()
+
+x.create_task('doctor appointment', 'book appointment', '20/03/2019', "1")  
+
+x.create_task('buy groceries', 'buy groceries for party', '10/03/2019', "0")  
+
+
+
     
 #x = Task()
 #    

@@ -24,39 +24,37 @@ def get_all_tasks():
         pass
     
     
+#@app.route('/api/task/add', methods = 'POST')
+#def add_task():
+#    x = Task()
+#    
+#    if request.method == 'POST':
+#        data = request.json
+#        title = data.get('title')
+#        desc = data.get('desc')
+#        date_due = data.get('date_due')
+#        imp = data.get('imp')
+#        
+#        x.create_task(title, desc, date_due, imp)
+#        
+#        return "successfully added task"
+#    
+#    else:
+#        pass
+    
+    
 @app.route('/api/task/add', methods = 'POST')
 def add_task():
     x = Task()
     
     if request.method == 'POST':
-        data = request.json
-        task_id = data.get('task_id')
-        title = data.get('title')
-        desc = data.get('desc')
-        date_due = data.get('date_due')
-        imp = data.get('imp')
-        
-        x.create_task(task_id, title, desc, date_due, imp)
-        
-        return "successfully added task"
-    
-    else:
-        pass
-    
-    
-@app.route('/api/task/add', methods = 'POST')
-def add_task():
-    x = Task()
-    
-    if request.method == 'POST':
-        
-        task_id = request.form.get('task_id')
+
         title = request.form.get('title')
         desc = request.form.get('desc')
         date_due = request.form.get('date_due')
         imp = request.form.get('imp')
 
-        x.create_task(task_id, title, desc, date_due, imp)
+        x.create_task(title, desc, date_due, imp)
         
         return "successfully added task"
     
@@ -69,7 +67,7 @@ def single_task():
     x = Task()
     
     if request.method == 'GET':
-        result = query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
+        result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
         return render_template('task.html',result = jsonify(result))
    
     
