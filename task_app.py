@@ -58,35 +58,41 @@ def confirm_delete():
     return render_template('delete_confirm.html')
 
 
+
 @app.route('/update/<task_id>', methods = ['GET', 'POST'])
 def update_task(task_id):
-    
-    
-    
-    return jsonify(task_id)
-    
-
-@app.route('/task/<task_id>', methods = ['GET', 'POST'])
-def view_update_task(task_id):
+    x = Task()
     
     if request.method == 'GET':
-        return render_template('task.html', task_id)
+        
+        result = x.call_api()
+        
+        for item in result:
+            
+            if item[0] == task_id:
+                return item
+        
+        return render_template('update.html', item=item)
     
-    if request.method == 'PUT':
-        x = Task()
+    
+    if request.method == 'POST':
+
         title = request.form.get('title')
         desc = request.form.get('desc')
         date_due = request.form.get('date_due')
         imp = request.form.get('imp')
         x.update_task(title, desc, date_due, imp)
-        return redirect(url_for('index'))
         
-    if request.method == 'DELETE':
-        x = Task()
-        x.delete_task(task_id)
         return redirect(url_for('index'))
         
         
+        
+    
+    
+
+#    return jsonify(task_id)
+    
+
        
         
 
@@ -103,21 +109,7 @@ def view_update_task(task_id):
 #        return jsonify(result)
     
       
-#@app.route('/api/task/<task_id>/update', methods = ['PUT'])
-#def update_task():
-#    x = Task()
-#    
-#    if request.method == 'PUT':
-#        
-#        task_id = request.form.get('update_task_id')
-#        title = request.form.get('update_title')
-#        desc = request.form.get('update_desc')
-#        date_due = request.form.get('update_date_due')
-#        imp = request.form.get('update_imp')
-#
-#        x.update_task(task_id, title, desc, date_due, imp)
-#        
-#        pass
+
 
 
 if __name__ == '__main__':
