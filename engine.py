@@ -91,7 +91,7 @@ class Task():
             self.connect_db()
             query = ''' UPDATE tasks SET title=?, desc=?, status=?, date_due=?, imp=? WHERE task_id=? '''
             self.c.execute(query, (self.title, self.desc, self.status, self.date_due, self.imp, self.task_id))
-            self.connection.commit()
+            self.connection.commit()  
             self.c.close() 
         except Exception as e:
             print(e)       

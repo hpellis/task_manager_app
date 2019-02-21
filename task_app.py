@@ -64,30 +64,20 @@ def update_task(task_id):
     x = Task()
     
     if request.method == 'GET':
-        
         result = x.call_api()
-        
         for item in result:
-            
             if item[0] == task_id:
                 return item
-        
         return render_template('update.html', item=item)
-    
-    
-    if request.method == 'POST':
 
+    if request.method == 'POST':
         title = request.form.get('title')
         desc = request.form.get('desc')
         date_due = request.form.get('date_due')
         imp = request.form.get('imp')
         x.update_task(title, desc, date_due, imp)
-        
         return redirect(url_for('index'))
         
-        
-        
-    
     
 
 #    return jsonify(task_id)
