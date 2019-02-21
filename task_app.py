@@ -21,6 +21,11 @@ def api():
     return jsonify(result)
 
 
+@app.route('/api/task/<task_id>', methods = ['GET', 'POST'])
+def update_task(task_id):
+    return jsonify(task_id)
+
+
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     x = Task()
@@ -44,12 +49,28 @@ def add_task():
         x.create_task(title, desc, date_due, imp)
         return redirect(url_for('index'))
     
-
-@app.route('/task/<task_id>', methods = ['GET', 'POST'])
-def update_task(task_id):
-    return jsonify(task_id)
-
-
+    
+@app.route('/delete', methods=['GET', 'DELETE'])
+def delete_task():
+    x = Task()
+    if request.method == 'GET':
+        result = x.call_api()
+        return render_template('delete.html', result=result)
+    
+    if request.method == 'DELETE':
+        task_id = request.form.get(result[task_id])
+        delete = request.form.get('delete')
+        
+        x.delete_task(task_id)
+        
+        
+        
+#    elif request.method == 'POST':
+#        x=Task()
+#        x.delete_task()
+#        return redirect(url_for('index'))
+        
+    
 
 @app.route('/task/<task_id>', methods = ['GET', 'POST'])
 def view_update_task(task_id):

@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<body>
+
+  <main>
+    <h1>Tasks</h1>
+    
+    
+    {% if result|length == 0 %}
+    
+            <p id="headline">You have nothing to do.</p>
+            
+    {% endif %}
+    
+
+   
+    {% for task in result %}
+    
+    <div class="card mt-4 mr-1 ml-1" {% if task[5] == 1 %} id="imp"  {% endif %} >
+      <div class="card-body">
+        <h5 class="card-title">{{task[1]}}</h5>
+        <p class="card-text">{{task[2]}}</p>
+        <p class="card-text">{{task[3]}}</p>
+        <p class="card-text">{{task[4]}}</p>
+        
+        <form action="/delete" method="DELETE">
+        <input type = "button" id="delete"> Delete Task</input>
+        </form>
+        
+      </div>
+    </div>
+    
+    {% endfor %}
+
+  
+<div>
+
+      <a href="{{ url_for('add_task') }}">Add new task</a>
+      
+</div>
+  
+   </main> 
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="static/js/engine.js"></script>
+  
+  
+  
+</body>
+
+
+{% endblock %}
