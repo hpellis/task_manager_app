@@ -119,8 +119,7 @@ class Task():
             print("Error with API")
                 
                 
-            
-            
+         
 
 x = Task()
 
@@ -142,7 +141,3 @@ x = Task()
 #x.update_task("4", "Doctor Appt", "book appt ASAP", "in progress", "20/04/2019", 1)
 #     
          
-
-            
-
-

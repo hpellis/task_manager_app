@@ -35,17 +35,40 @@ def index():
 def add_task():
     if request.method == 'GET':
         return render_template ('add_task.html')
-    
     elif request.method == 'POST':
         x = Task()
         title = request.form.get('title')
         desc = request.form.get('desc')
         date_due = request.form.get('date_due')
         imp = request.form.get('imp')
-
         x.create_task(title, desc, date_due, imp)
-        
         return redirect(url_for('index'))
+    
+
+@app.route('/<task_id>', methods = ['GET', 'POST'])
+def update_task():
+    if request.method == 'GET':
+        return render_template('task.html', '<task_id>')
+    
+    if request.method == 'POST':
+        x = Task()
+        title = request.form.get('title')
+        desc = request.form.get('desc')
+        date_due = request.form.get('date_due')
+        imp = request.form.get('imp')
+        x.update_task(title, desc, date_due, imp)
+        
+        
+        
+        
+    
+    
+
+
+def get_xxxx(task_id):
+    if request.method == 'GET':
+        return jsonify(tasks.read(xxxx))
+    
 
 
 
