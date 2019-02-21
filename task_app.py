@@ -51,7 +51,7 @@ def update_task(task_id):
 
 
 
-@app.route('/task/<task_id>', methods = 'GET', 'POST')
+@app.route('/task/<task_id>', methods = ['GET', 'POST'])
 def view_update_task(task_id):
     
     if request.method == 'GET':

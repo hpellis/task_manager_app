@@ -15,14 +15,12 @@ class Task():
     
     def __init__(self):
         self.db_path = 'static/database/tasks.db'
-        
-        
+         
     def check_db(self):
         if exists(self.db_path):
             return True
         else:
             return False
- 
     
     def connect_db(self):
         if self.check_db():
@@ -32,8 +30,7 @@ class Task():
             except Exception as e:
                 print(e)
         else:
-            print('Database path does not exist.')
-        
+            print('Database path does not exist.')  
 
     def query(self, query):
         try:
@@ -45,15 +42,13 @@ class Task():
         except Exception as e:
             print(e)
 
-
     def get_all_tasks(self):
         try:
             query = "SELECT * from tasks ORDER BY date_due ASC;"
             self.query(query)
             return self.results
         except Exception as e:
-            print(e)
-            
+            print(e)     
     
     def create_task(self, title, desc, date_due, imp):
         self.title = title
@@ -74,7 +69,6 @@ class Task():
         except Exception as e:
             print(e)
 
-
     def delete_task(self, task_id):
         self.task_id = task_id
         try:
@@ -85,7 +79,6 @@ class Task():
             self.c.close()
         except Exception as e:
             print(e)
-
 
     def update_task(self, task_id, title, desc, status, date_due, imp):
         self.task_id = task_id
@@ -101,8 +94,7 @@ class Task():
             self.connection.commit()
             self.c.close() 
         except Exception as e:
-            print(e)   
-            
+            print(e)       
             
     def call_api(self):
         try:
@@ -118,8 +110,6 @@ class Task():
         except:
             print("Error with API")
                 
-                
-         
 
 x = Task()
 
