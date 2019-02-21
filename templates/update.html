@@ -11,40 +11,27 @@
 
 <h1>Update Task</h1>
     
-<div><h2>Update Task {{ }}</h2>
-
-
-{{item}}
     
-  <form action="/update/{{   }}" method="POST">
+<div><h2>Update Task</h2>
+
+
+  <form action="/update/{{item[0]}}" method="POST">
     
-  <p>Task Name<input type="text" name="title" value="{{ }}"></p>
+  <p>Task Name<input type="text" name="title" value="{{item[1]}}"></p>
     
-  <p>Description<input type="text" name="desc" value="{{ }}"></p>
+  <p>Description<input type="text" name="desc" value="{{item[2]}}"></p>
 
-  
+  <p>Due Date<input type="date" name="date_due" value="{{item[3]}}"></p>
 
-  
-  <p>Due Date<input type="date" name="date_due" value="{{ }}"></p>
-
-  <p>Important<input type="radio" name="imp" value="{{ }}"></p>
+  <p>Important<input type="radio" name="imp" value="{{item[5]}}"></p>
       
-  <p><input type="submit" value="Update Task"></p>
+  <p><input type="submit" value="Update Task" id="update"></p>
       
   </form>
     
     </div>
   </main>
     
-
-
 </body>
 
 {% endblock %}
-
-
-
-
-        <form action="/update/{{task[0]}}" method="POST">
-        <input type = "submit" value="Submit Changes" id="update"></input>
-        </form>
