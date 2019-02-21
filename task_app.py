@@ -49,83 +49,45 @@ def add_task():
 def update_task(task_id):
     return jsonify(task_id)
 
-#    if request.method == 'GET':
-#        return render_template('task.html', '<task_id>')
-#    
-#    if request.method == 'POST':
-#        x = Task()
-#        title = request.form.get('title')
-#        desc = request.form.get('desc')
-#        date_due = request.form.get('date_due')
-#        imp = request.form.get('imp')
-#        x.update_task(title, desc, date_due, imp)
-        
+
 
 @app.route('/task/<task_id>', methods = 'GET', 'POST')
 def view_update_task(task_id):
+    
     if request.method == 'GET':
         return render_template('task.html', task_id)
-    if request.method == 'POST':
+    
+    if request.method == 'PUT':
+        x = Task()
+        title = request.form.get('title')
+        desc = request.form.get('desc')
+        date_due = request.form.get('date_due')
+        imp = request.form.get('imp')
+        x.update_task(title, desc, date_due, imp)
+        return redirect(url_for('index'))
+        
+    if request.method == 'DELETE':
+        x = Task()
+        x.delete_task(task_id)
+        return redirect(url_for('index'))
+        
         
        
         
 
-def filter_by_id():
-    sql_statement = "SELECT * FROM to_do_list WHERE id = {}".format(id)
-    results = sql_statement.results
-    return jsonify(results)
-        
-    
-    
-
-
-def get_xxxx(task_id):
-    if request.method == 'GET':
-        return jsonify(tasks.read(xxxx))
-    
-
-
-
-    
-
-#    
-#    
-#
-#    
-#
-#
-#    
-#    
-#    
+#def filter_by_id():
+#    sql_statement = "SELECT * FROM to_do_list WHERE id = {}".format(id)
+#    results = sql_statement.results
+#    return jsonify(results)
+#         
 #@app.route('/api/task/<task_id>', methods = ['GET'])
 #def single_task():
 #    x = Task()
 #    if request.method == 'GET':
 #        result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
 #        return jsonify(result)
-#    
-#
-#    
-#@app.route('/api/task/add', methods = 'POST')
-#def add_task():
-#    x = Task()
-#    
-#    if request.method == 'POST':
-#
-#        title = request.form.get('title')
-#        desc = request.form.get('desc')
-#        date_due = request.form.get('date_due')
-#        imp = request.form.get('imp')
-#
-#        x.create_task(title, desc, date_due, imp)
-#        
-#        return render_template('')
-#    
-#    else:
-#        pass        
-#         
-#    
-#        
+    
+      
 #@app.route('/api/task/<task_id>/update', methods = ['PUT'])
 #def update_task():
 #    x = Task()
@@ -141,16 +103,6 @@ def get_xxxx(task_id):
 #        x.update_task(task_id, title, desc, date_due, imp)
 #        
 #        pass
-#    
-##@app.route('/api/task/<task_id>/delete', methods = ['DELETE'])
-##def delete_task():
-##    x = Task()
-##    
-##    task_id = <task_id>
-##    
-##    if request.method == 'DELETE':
-##        x.delete_task(task_id)
-#    
 
         
  
