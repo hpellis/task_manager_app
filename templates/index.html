@@ -9,11 +9,16 @@
       <ul>
       
     <!--  {{api_results}} ADD AN IF STTAMENT SO IF NO RESULTS THERE@S A MESSAGE ON PAGE-->
+    
+    
         {% for task in result %}
           <li><input type="checkbox">{{task}}</li>
         {% endfor %}
-        
       </ul>
+
+      
+      <a href="{{ url_for('add_task') }}">Add new task</a>
+      
     </div>
   </main>
   

@@ -38,7 +38,6 @@ def add_task():
     
     elif request.method == 'POST':
         x = Task()
-        form_data = request.form
         title = request.form.get('title')
         desc = request.form.get('desc')
         date_due = request.form.get('date_due')
