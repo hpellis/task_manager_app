@@ -6,8 +6,6 @@
   <main>
     <h1>Tasks</h1>
     
-
-    {{result}}
     
     {% if result|length == 0 %}
     
@@ -16,30 +14,17 @@
     {% endif %}
     
 
-<div>
-    <ul>
-        {% for task in result %}
-          <li><input type="checkbox">{{task}}</li>
-        {% endfor %}
-     </ul>
-</div>
-
-      
-
-
    
-
-   
-    {% for task in results %}
+    {% for task in result %}
     
     <div class="card mt-4 mr-1 ml-1" {% if task[5] == 1 %} id="imp"  {% endif %} >
       <div class="card-body">
         <h5 class="card-title">{{task[1]}}</h5>
-        <p class="card-text">{{desc}}</p>
-        <p class="card-text">{{date_due}}</p>
+        <p class="card-text">{{task[2]}}</p>
+        <p class="card-text">{{task[3]}}</p>
+        <p class="card-text">{{task[4]}}</p>
       </div>
     </div>
-    
     
     {% endfor %}
 
@@ -54,6 +39,8 @@
   
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="static/js/engine.js"></script>
+  
+  
   
 </body>
 

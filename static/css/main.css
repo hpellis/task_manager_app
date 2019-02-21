@@ -1,0 +1,64 @@
+
+h1 {
+  font-size: 40px;
+  font-family: helvetica;
+  padding-top: 50px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#index {
+  text-align: center;
+}
+
+.main p {
+  font-family: 'helvetica';
+  font-size: 14px;
+  text-align: center;
+}
+
+.hazard_count {
+    padding-bottom: 20px;
+}
+
+
+/*styling for cards*/
+.card {
+width: 23%;
+}
+
+h5 span {
+    display: block;
+}
+
+img {
+    max-width: 50%;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+#hazard {
+    background-color: #ffe2e2;
+}
+
+#hazard h5 {
+    color: #f40707;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+#cards {
+padding-bottom: 50px;
+}

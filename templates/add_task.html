@@ -1,38 +1,53 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<body>
+<head>
 
-  <main>
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
+</head>
+
+<body>
+<main>
     <h1>Tasks</h1>
     
-    <div>Add a new task:
+    <div><h2>Add A New Task</h2>
     
-    <form action="/add" method="POST">
+  <form action="/add" method="POST">
     
-  Task Name
-  <input type="text" name="title">
+  <p>Task Name<input type="text" name="title"></p>
     
-    
-  Description
-  <input type="text" name="desc">
+  <p>Description<input type="text" name="desc"></p>
   
-    Due Date
-  <input type="text" name="due_date">
+  <p>Due Date<input type="text" id="datepicker"></p>
 
-    Important
-    <input type="radio" name="imp" value="important">
+  <p>Important<input type="radio" name="imp" value="important"></p>
       
-      <input type="submit" value="Create Task">
+  <p><input type="submit" value="Create Task"></p>
       
-    </form>
-    </div>
+  </form>
     
+    </div>
   </main>
     
 {% endblock %}
   
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="static/js/engine.js"></script>
+  
+   <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
   
 </body>

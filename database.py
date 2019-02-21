@@ -16,7 +16,7 @@ def connect_database():
 
 def create_table():
     conn, cursor = connect_database()
-    cursor.execute('CREATE TABLE IF NOT EXISTS tasks (task_id INTEGER PRIMARY KEY, title TEXT, desc TEXT, status TEXT, date_due TEXT, date_created TEXT, imp TEXT)')
+    cursor.execute('CREATE TABLE IF NOT EXISTS tasks (task_id INTEGER PRIMARY KEY, title TEXT, desc TEXT, status TEXT, date_due DATETIME, date_created DATETIME, imp TEXT)')
     conn.close()
 
 create_table()
