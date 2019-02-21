@@ -45,21 +45,35 @@ def add_task():
         return redirect(url_for('index'))
     
 
-@app.route('/<task_id>', methods = ['GET', 'POST'])
-def update_task():
+@app.route('/task/<task_id>', methods = ['GET', 'POST'])
+def update_task(task_id):
+    return jsonify(task_id)
+
+#    if request.method == 'GET':
+#        return render_template('task.html', '<task_id>')
+#    
+#    if request.method == 'POST':
+#        x = Task()
+#        title = request.form.get('title')
+#        desc = request.form.get('desc')
+#        date_due = request.form.get('date_due')
+#        imp = request.form.get('imp')
+#        x.update_task(title, desc, date_due, imp)
+        
+
+@app.route('/task/<task_id>', methods = 'GET', 'POST')
+def view_update_task(task_id):
     if request.method == 'GET':
-        return render_template('task.html', '<task_id>')
-    
+        return render_template('task.html', task_id)
     if request.method == 'POST':
-        x = Task()
-        title = request.form.get('title')
-        desc = request.form.get('desc')
-        date_due = request.form.get('date_due')
-        imp = request.form.get('imp')
-        x.update_task(title, desc, date_due, imp)
         
+       
         
-        
+
+def filter_by_id():
+    sql_statement = "SELECT * FROM to_do_list WHERE id = {}".format(id)
+    results = sql_statement.results
+    return jsonify(results)
         
     
     
