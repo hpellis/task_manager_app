@@ -50,19 +50,24 @@ def add_task():
         return redirect(url_for('index'))
     
     
-@app.route('/delete', methods=['GET', 'DELETE'])
-def delete_task():
-    x = Task()
-    if request.method == 'GET':
-        result = x.call_api()
-        return render_template('delete.html', result=result)
+#@app.route('/delete', methods=['GET', 'DELETE'])
+#def delete_task():
+#    x = Task()
+#    if request.method == 'GET':
+#        result = x.call_api()
+#        return render_template('delete.html', result=result)
+#    
+#    if request.method == 'DELETE':
+#        task_id = request.form.get(result[task_id])
+#        delete = request.form.get('delete')
+#        
+#        x.delete_task(task_id)
+#        
+
+@app.route('/delete/<int:task_id>', methods=['POST', 'GET'])
+def delete_task(task_id):
+    return(jsonify(task_id))
     
-    if request.method == 'DELETE':
-        task_id = request.form.get(result[task_id])
-        delete = request.form.get('delete')
-        
-        x.delete_task(task_id)
-        
         
         
 #    elif request.method == 'POST':

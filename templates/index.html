@@ -24,10 +24,18 @@
         <p class="card-text">{{task[3]}}</p>
         <p class="card-text">{{task[4]}}</p>
       </div>
+      
+                <form action="/delete/{{task[0]}}" method="POST">
+        <input type = "submit" value="delete" id="delete"> Delete Task</input>
+        </form>
+  
+      
     </div>
     
+    
     {% endfor %}
-
+    
+    
   
 <div>
 

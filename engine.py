@@ -55,7 +55,7 @@ class Task():
         self.desc = desc
         self.status = 'to do'
         self.date = date_due
-        format_date = '%d/%m/%Y'
+        format_date = '%Y-%m-%d'
         self.date_due = datetime.strptime(self.date, format_date)
         self.date_created = datetime.now()
         self.imp = imp
