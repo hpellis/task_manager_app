@@ -66,15 +66,15 @@ def add_task():
 
 @app.route('/delete/<int:task_id>', methods=['POST', 'GET'])
 def delete_task(task_id):
-    return(jsonify(task_id))
-    
-        
-        
-#    elif request.method == 'POST':
-#        x=Task()
-#        x.delete_task()
-#        return redirect(url_for('index'))
-        
+    if request.method == 'POST':
+        x = Task()
+        x.delete_task(task_id)
+        return redirect(url_for('confirm_delete'))
+
+
+@app.route('/delete/confirm', methods = ['GET'])
+def confirm_delete():
+    return render_template('delete_confirm.html')
     
 
 @app.route('/task/<task_id>', methods = ['GET', 'POST'])
@@ -129,9 +129,6 @@ def view_update_task(task_id):
 #        x.update_task(task_id, title, desc, date_due, imp)
 #        
 #        pass
-
-        
- 
 
 
 if __name__ == '__main__':
