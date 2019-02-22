@@ -3,30 +3,19 @@
 
 
 <body>
-<main>
+  <main>
     <h1>Tasks</h1>
-    
-    <div><h2>Add A New Task</h2>
-    
-  <form action="/add" method="POST">
-    
-  <p>Task Name<input type="text" name="title"></p>
-    
-  <p>Description<input type="text" name="desc"></p>
-    
-  <p>Due Date<input type="date" name="date_due" id="datepicker"></p>
-
-  <p>Important<input type="radio" name="imp" value="important"></p>
-      
-  <p><input type="submit" value="Create Task"></p>
-      
-  </form>
-    
+    <div>
+      <h2>Add A New Task</h2>
+      <form action="/add" method="POST">
+        <p>Task Name<input type="text" name="title"></p>
+        <p>Description<input type="text" name="desc"></p>
+        <p>Due Date<input type="date" name="date_due" id="datepicker"></p>
+        <p>Important<input type="radio" name="imp" value="important"></p>
+        <p><input type="submit" value="Create Task"></p>
+      </form>
     </div>
   </main>
-    
-
-
 </body>
 
 {% endblock %}

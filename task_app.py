@@ -48,6 +48,7 @@ def add_task():
 @app.route('/delete/<task_id>', methods=['POST', 'GET'])
 def delete_task(task_id):
     if request.method == 'POST':
+        task_id = task_id
         x = Task()
         x.delete_task(task_id)
         return redirect(url_for('confirm_delete'))

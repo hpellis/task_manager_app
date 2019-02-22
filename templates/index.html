@@ -4,48 +4,37 @@
 <body>
   <main>
     <h1>Tasks</h1>
-    
-    
     <div id="add_new_task">
-      <a href="{{ url_for('add_task') }}"><h3>ADD NEW TASK</h3></a>
+      <a href="{{ url_for('add_task') }}">
+        <h3>ADD NEW TASK</h3>
+      </a>
     </div>
-    
     <div class="container" id="task_cards">
-        <div class="row d-flex justify-content-start">
-    
-    {% if result|length == 0 %}
-            <p id="headline">You have nothing to do.</p>  
-    {% endif %}
-    
-    {% for task in result %}
-
-    <div class="card mt-4 mr-1 ml-1" {% if task[6] == "1" %} id="imp"  {% endif %} >
-      <div class="card-body">
-        <h5 class="card-title">{{task[1]}}</h5>
-        <p class="card-text" id="desc">{{task[2]}}</p>
-        <p class="card-text">Status: {{task[3]}}</p>
-        <p class="card-text">Date Due: {{task[4][8:10]}} / {{task[4][5:7]}} / {{task[4][0:4]}} </p>     
+      <div class="row d-flex justify-content-start">
+        {% if result|length == 0 %}
+        <p id="headline">You have nothing to do.</p>
+        {% endif %}
+        {% for task in result %}
+        <div class="card mt-4 mr-1 ml-1" {% if task[6]=="1" %} id="imp" {% endif %}>
+          <div class="card-body">
+            <h5 class="card-title">{{task[1]}}</h5>
+            <p class="card-text" id="desc">{{task[2]}}</p>
+            <p class="card-text">Status: {{task[3]}}</p>
+            <p class="card-text">Date Due: {{task[4][8:10]}} / {{task[4][5:7]}} / {{task[4][0:4]}} </p>
+          </div>
+          <div style="text-align:center;">
+            <form action="/update/{{task[0]}}" method="GET">
+              <input type="submit" value="Update" id="update_button"></input>
+            </form>
+            <form action="/delete/{{task[0]}}" method="POST">
+              <input type="submit" value="Delete" id="delete_button"></input>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
       </div>
-      
-      <div style="text-align:center;">
-      
-        <form action="/update/{{task[0]}}" method="GET">
-        <input type = "submit" value="Update" id="update_button"></input>
-        </form>
-      
-        <form action="/delete/{{task[0]}}" method="POST">
-        <input type = "submit" value="Delete" id="delete_button"></input>
-        </form>
-        
-       </div> 
     </div>
-    
-    {% endfor %}
-    
-  </div>
-</div>  
-</main> 
+  </main>
 </body>
-
 
 {% endblock %}

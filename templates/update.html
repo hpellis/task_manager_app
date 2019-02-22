@@ -1,48 +1,27 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-
 <body>
-<main>
-
-<h1>Update Task</h1>
-    
-<div><h2>Update Task</h2>
-
-
-  <form action="/update/{{specific_item[0]}}" id="update_form" method="POST">
-    
-  <p>Task Name<input type="text" name="title" value="{{specific_item[1]}}"></p>
-    
-  <p>Description<input type="text" name="desc" value="{{specific_item[2]}}"></p>
-
-  <p>Due Date<input type="date" name="date_due" value="{{specific_item[4]}}"></p>
- 
-
-  
-  <p>Status
-  
-  <select name = "status" form="update_form">
-  <option value="to do">To Do</option>
-  <option value="in progress">In Progress</option>
-  <option value="done">Done</option>
-  </select>
-
-  </p>
-  
-
-
-  <p>Important<input type="radio" name="imp" value="{{specific_item[6]}}"></p>
-      
-  <p><input type="submit" value="Update Task" id="update"></p>
-  
-
-      
-  </form>
-    
+  <main>
+    <h1>Update Task</h1>
+    <div>
+      <h2>Update Task</h2>
+      <form action="/update/{{specific_item[0]}}" id="update_form" method="POST">
+        <p>Task Name<input type="text" name="title" value="{{specific_item[1]}}"></p>
+        <p>Description<input type="text" name="desc" value="{{specific_item[2]}}"></p>
+        <p>Due Date<input type="date" name="date_due" value="{{specific_item[4]}}"></p>
+        <p>Status
+          <select name="status" form="update_form">
+            <option value="to do">To Do</option>
+            <option value="in progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </p>
+        <p>Important<input type="radio" name="imp" value="{{specific_item[6]}}"></p>
+        <p><input type="submit" value="Update Task" id="update"></p>
+      </form>
     </div>
   </main>
-    
 </body>
 
 {% endblock %}

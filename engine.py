@@ -88,12 +88,12 @@ class Task():
         self.task_id = task_id
         try:
             self.connect_db()
-            query = ''' DELETE FROM tasks WHERE task_id = ? '''
-            self.c.execute(query, self.task_id)
+            query = ' DELETE FROM tasks WHERE task_id = {}'.format(task_id)
+            self.c.execute(query)
             self.connection.commit()
             self.c.close()
         except Exception as e:
-            print(e)
+            raise
 
     def update_task(self, task_id, title, desc, status, date_due, imp):
         self.task_id = task_id
@@ -123,27 +123,4 @@ class Task():
             elif response.status_code == 500:
                 print("error 500") 
         except:
-            print("Error with API")
-        
-        
-
-x = Task()
-
-#x.create_task('doctor appointment', 'book appointment', '20/03/2019', "1")  
-#
-#x.create_task('buy groceries', 'buy groceries for party', '10/03/2019', "0")  
-
-#x.create_task('shops', 'go to shops', '19/03/2019', "0")  
-
-    
-#x = Task()
-#    
-##result = x.get_all_tasks()    
-#
-##x.create_task(4, 'doctor appointment', 'book appointment', '20/03/2019', 1)   
-#
-##x.delete_task("4")
-#
-#x.update_task("4", "Doctor Appt", "book appt ASAP", "in progress", "20/04/2019", 1)
-#     
-         
+            print("Error with API")    
