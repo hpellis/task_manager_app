@@ -62,14 +62,12 @@ def confirm_delete():
 def update_task(task_id):
     x = Task()
     task_id = task_id
-
     if request.method == 'GET':
         result = x.call_api()
         for item in result:
             if item[0] == int(task_id):
                 specific_item=item
         return render_template('update.html', specific_item=specific_item, task_id=task_id)
-    
     if request.method == 'POST':
         title = request.form.get('title')
         desc = request.form.get('desc')
@@ -78,6 +76,7 @@ def update_task(task_id):
         imp = request.form.get('imp')
         x.update_task(task_id, title, desc, status, date_due, imp)
         return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
