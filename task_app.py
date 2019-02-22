@@ -71,21 +71,13 @@ def update_task(task_id):
         return render_template('update.html', specific_item=specific_item, task_id=task_id)
     
     if request.method == 'POST':
-        
         title = request.form.get('title')
-        
         desc = request.form.get('desc')
-        
+        status = request.form.get('status')
         date_due = request.form.get('date_due')
-        
-#        status = request.form.get('status')
-        
         imp = request.form.get('imp')
-        
-        x.update_task(task_id, title, desc, date_due, imp)
-        
+        x.update_task(task_id, title, desc, status, date_due, imp)
         return redirect(url_for('index'))
-        
 
 if __name__ == '__main__':
     app.run(debug=True)

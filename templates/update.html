@@ -10,7 +10,7 @@
 <div><h2>Update Task</h2>
 
 
-  <form action="/update/{{specific_item[0]}}" method="POST">
+  <form action="/update/{{specific_item[0]}}" id="update_form" method="POST">
     
   <p>Task Name<input type="text" name="title" value="{{specific_item[1]}}"></p>
     
@@ -18,11 +18,11 @@
 
   <p>Due Date<input type="date" name="date_due" value="{{specific_item[4]}}"></p>
  
-<!-- 
+
   
   <p>Status
   
-  <select name = "status">
+  <select name = "status" form="update_form">
   <option value="to do">To Do</option>
   <option value="in progress">In Progress</option>
   <option value="done">Done</option>
@@ -30,7 +30,7 @@
 
   </p>
   
-  -->
+
 
   <p>Important<input type="radio" name="imp" value="{{specific_item[6]}}"></p>
       
