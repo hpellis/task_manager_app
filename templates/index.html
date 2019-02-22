@@ -2,7 +2,6 @@
 {% block content %}
 
 <body>
-
   <main>
     <h1>Tasks</h1>
     
@@ -11,10 +10,8 @@
       <a href="{{ url_for('add_task') }}"><h3>ADD NEW TASK</h3></a>
     </div>
     
-    
     <div class="container" id="task_cards">
         <div class="row d-flex justify-content-start">
-        
     
     {% if result|length == 0 %}
             <p id="headline">You have nothing to do.</p>  
@@ -44,16 +41,7 @@
     
   </div>
 </div>  
-  
-
-
-
-  
-   </main> 
-  
-
-  
-  
+</main> 
 </body>
 
 

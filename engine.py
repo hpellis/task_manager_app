@@ -95,17 +95,17 @@ class Task():
         except Exception as e:
             print(e)
 
-    def update_task(self, task_id, title, desc, status, date_due, imp):
+    def update_task(self, task_id, title, desc, date_due, imp):
         self.task_id = task_id
         self.title = title
         self.desc = desc
-        self.status = status
+#        self.status = status
         self.date_due = date_due
         self.imp = imp
         try:
             self.connect_db()
-            query = ''' UPDATE tasks SET title=?, desc=?, status=?, date_due=?, imp=? WHERE task_id=? '''
-            self.c.execute(query, (self.title, self.desc, self.status, self.date_due, self.imp, self.task_id))
+            query = ''' UPDATE tasks SET title=?, desc=?,  date_due=?, imp=? WHERE task_id=? '''
+            self.c.execute(query, (self.title, self.desc, self.date_due, self.imp, self.task_id))
             self.connection.commit()  
             self.c.close() 
         except Exception as e:
