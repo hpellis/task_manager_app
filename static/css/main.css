@@ -7,18 +7,14 @@ h1 {
   padding-bottom: 20px;
 }
 
-#index {
-  text-align: center;
-}
-
 .main p {
   font-family: 'helvetica';
   font-size: 14px;
   text-align: center;
 }
 
-.hazard_count {
-    padding-bottom: 20px;
+#add_new_task {
+    text-align: center;
 }
 
 
@@ -47,12 +43,8 @@ img {
     text-align: center;
 }
 
-#imp {
-    background-color: #ffe2e2;
-}
-
-#hazard h5 {
-    color: #f40707;
+.card-body #imp {
+    background-color: #f7d4d4;
 }
 
 .card-body {

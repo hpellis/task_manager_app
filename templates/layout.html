@@ -20,38 +20,27 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
   <!--css-->
   <link rel="stylesheet" href='{{url_for("static", filename="css/main.css")}}'>
-  
-  <title>Task Manager</title>
-  
-  
+  <title>Task Manager</title>  
 </head>
 
 <body>
-  
   <header>
     <section id="header">
-   
-        
         <nav class="navbar navbar-dark bg-dark">
            <div class="container">
         <div>
-         <a class="navbar-brand" href="/">Home</a>
+         <a class="navbar-brand" href="/">Task Manager</a>
              </div>
       </div>
         </nav>
-        
-    
     </section>
   </header>
 
   <div class="container">
-
     {% block content %}
 
     {% endblock %}
-
   </div>
 
 </body>
-
 </html>

@@ -61,14 +61,14 @@ def confirm_delete():
 @app.route('/update/<task_id>', methods = ['GET', 'POST'])
 def update_task(task_id):
     x = Task()
-    
+
     if request.method == 'GET':
         result = x.call_api()
         for item in result:
-            if item[0] == task_id:
-                return item
-        return render_template('update.html', item=item)
-
+            if item[0] == int(task_id):
+                specific_item=item
+        return render_template('update.html', specific_item=specific_item, task_id=task_id)
+    
     if request.method == 'POST':
         title = request.form.get('title')
         desc = request.form.get('desc')

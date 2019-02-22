@@ -48,7 +48,18 @@ class Task():
             self.query(query)
             return self.results
         except Exception as e:
-            print(e)     
+            print(e)  
+            
+            
+    def get_single_task(self, task_id):
+        self.task_id=task_id
+        try:
+            query = ''' SELECT * from tasks WHERE task_id = ? '''
+            self.query(query, self.task_id)
+            return self.results
+        except Exception as e:
+            print(e)  
+        
     
     def create_task(self, title, desc, date_due, imp):
         self.title = title
@@ -59,6 +70,10 @@ class Task():
         self.date_due = datetime.strptime(self.date, format_date)
         self.date_created = datetime.now()
         self.imp = imp
+        if self.imp == "important":
+            self.imp = 1
+        else: 
+            self.imp == 0
         try:
             self.connect_db()
             query = ''' INSERT INTO tasks(title, desc, status, date_due, date_created, imp)
@@ -109,7 +124,8 @@ class Task():
                 print("error 500") 
         except:
             print("Error with API")
-                
+        
+        
 
 x = Task()
 
