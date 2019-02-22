@@ -7,14 +7,17 @@
     <h1>Tasks</h1>
     
     
-    {% if result|length == 0 %}
+    <div id="add_new_task">
+      <a href="{{ url_for('add_task') }}">Add new task</a>
+    </div>
     
-            <p id="headline">You have nothing to do.</p>
-            
+    <div class="container" id="task_cards">
+        <div class="row d-flex justify-content-start">
+    
+    {% if result|length == 0 %}
+            <p id="headline">You have nothing to do.</p>  
     {% endif %}
     
-
-   
     {% for task in result %}
     
     <div class="card mt-4 mr-1 ml-1" {% if task[5] == 1 %} id="imp"  {% endif %} >
@@ -24,28 +27,29 @@
         <p class="card-text">{{task[3]}}</p>
         <p class="card-text">{{task[4]}}</p>
       </div>
+      
         <form action="/delete/{{task[0]}}" method="POST">
         <input type = "submit" value="Delete" id="delete"></input>
         </form>
-      
+        
+        <form action="/update/{{task[0]}}" method="GET">
+        <input type = "submit" value="Update" id="update"></input>
+        </form>
+        
     </div>
-    
     
     {% endfor %}
     
-    
+  </div>
+</div>  
   
-<div>
 
-      <a href="{{ url_for('add_task') }}">Add new task</a>
-      
-</div>
+
+
   
    </main> 
   
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="static/js/engine.js"></script>
-  
+
   
   
 </body>

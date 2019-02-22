@@ -204,7 +204,31 @@ def create_task():
 #        return "successfully added task"
 #    
 #    else:
-#        pass
+#        pass\
+    
+    
+    #    return jsonify(task_id)
+    
+
+       
+        
+
+#def filter_by_id():
+#    sql_statement = "SELECT * FROM to_do_list WHERE id = {}".format(id)
+#    results = sql_statement.results
+#    return jsonify(results)
+#         
+#@app.route('/api/task/<task_id>', methods = ['GET'])
+#def single_task():
+#    x = Task()
+#    if request.method == 'GET':
+#        result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
+#        return jsonify(result)
+    
+      
+
+
+
             
 @app.route('/api/tasks', methods = ['GET'])
 def get_all_tasks():

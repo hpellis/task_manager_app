@@ -58,7 +58,6 @@ def confirm_delete():
     return render_template('delete_confirm.html')
 
 
-
 @app.route('/update/<task_id>', methods = ['GET', 'POST'])
 def update_task(task_id):
     x = Task()
@@ -78,29 +77,6 @@ def update_task(task_id):
         x.update_task(title, desc, date_due, imp)
         return redirect(url_for('index'))
         
-    
-
-#    return jsonify(task_id)
-    
-
-       
-        
-
-#def filter_by_id():
-#    sql_statement = "SELECT * FROM to_do_list WHERE id = {}".format(id)
-#    results = sql_statement.results
-#    return jsonify(results)
-#         
-#@app.route('/api/task/<task_id>', methods = ['GET'])
-#def single_task():
-#    x = Task()
-#    if request.method == 'GET':
-#        result = x.query(''' SELECT * FROM tasks WHERE task_id = {} ''').format(task_id)
-#        return jsonify(result)
-    
-      
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
