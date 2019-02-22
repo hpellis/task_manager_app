@@ -92,8 +92,7 @@ class Task():
             self.c.execute(query)
             self.connection.commit()
             self.c.close()
-        except Exception as e:
-            raise
+
 
     def update_task(self, task_id, title, desc, status, date_due, imp):
         self.task_id = task_id
