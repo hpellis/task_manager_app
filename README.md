@@ -43,6 +43,6 @@ Run the app file.
 
 ```$ python task_app.py```
 
-Navigate to the local host address in your browswer to see the app running. 
+Navigate to the local host address in your browser to see the app running. 
 
 ![image of application home page](/final_images/final_version.png?raw=true "Task Manager")
